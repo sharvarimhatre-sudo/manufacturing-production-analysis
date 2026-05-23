@@ -133,28 +133,15 @@ pip install pandas numpy matplotlib seaborn scipy
 ```
 
 ### Run with the Kaggle dataset
-1. Download `manufacturing_production_data.csv` from
-   [Kaggle](https://www.kaggle.com/datasets/ziya07/manufacturing-production-data)
-2. In `manufacturing_analysis.py`, replace:
+1. Download `manufacturing_production_data.csv` from Data.zip 
+2. Download and Run `manufacturing_analysis.py`, replace:
 ```python
-# Line ~75 — swap synthetic data for real CSV
-df = generate_dataset(500)
-```
-with:
+# Line ~24 — Replace path to csv file at 
 ```python
 df = pd.read_csv("manufacturing_production_data.csv")
 ```
-3. Map your column names in the **Derived columns** section (~line 90) if they
+3. Map your column names in the **Derived columns** section (~line 26) if they
    differ from the schema below.
-
-### Run with synthetic data (no download needed)
-```bash
-python manufacturing_analysis.py
-```
-The script will generate a realistic 500-job synthetic dataset matching the
-Kaggle schema and produce all outputs immediately.
-
----
 
 ## Dataset Schema
 
@@ -192,7 +179,7 @@ Kaggle schema and produce all outputs immediately.
 
 ---
 
-## 📝 Related Content
+## Related Content
 
 - [Kaggle Dataset](https://www.kaggle.com/datasets/ziya07/manufacturing-production-data)
 
