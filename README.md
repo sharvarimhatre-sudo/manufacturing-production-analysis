@@ -169,12 +169,12 @@ df = pd.read_csv("manufacturing_production_data.csv")
 ## Key Takeaways
 
 ```
--> 82% of jobs miss schedule    →  Planning ≠ Execution
-->  79.5% capacity util         →  Aggregate hides machine-level imbalance
-->  P95 lead time is 2× mean    →  Variance, not average, is the customer problem
-->  68.9% resource util (flat)  →  Job sequencing gap, not a shift problem
-->  Normal efficiency curve     →  Systems constraint, not a talent gap
-->  2 causes = 80% of delays    →  Pareto confirmed — fix is concentrated
+→ 82% of jobs miss schedule    →  Planning ≠ Execution
+→  79.5% capacity util         →  Aggregate hides machine-level imbalance
+→  P95 lead time is 2× mean    →  Variance, not average, is the customer problem
+→  68.9% resource util (flat)  →  Job sequencing gap, not a shift problem
+→  Normal efficiency curve     →  Systems constraint, not a talent gap
+→  2 causes = 80% of delays    →  Pareto confirmed — fix is concentrated
 ```
 
 ---
