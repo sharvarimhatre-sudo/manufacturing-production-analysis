@@ -52,7 +52,6 @@ manufacturing-production-analysis/
 │   ├── viz3_efficiency_segmentation.png# KDE curves, donut, box plots, shift bars
 │   └── viz4_delay_root_causes.png      # Pareto, avg delay, dept stack, scatter
 │
-├── manufacturing_linkedin_article.md   # 2,500-word article + insight summary
 └── README.md
 ```
 
@@ -195,7 +194,7 @@ Kaggle schema and produce all outputs immediately.
 
 ## 📝 Related Content
 
-- 📊 [Kaggle Dataset](https://www.kaggle.com/datasets/ziya07/manufacturing-production-data)
+- [Kaggle Dataset](https://www.kaggle.com/datasets/ziya07/manufacturing-production-data)
 
 ---
 
