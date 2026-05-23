@@ -20,87 +20,8 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-# ─────────────────────────────────────────────
-#  SECTION 0 — DATA GENERATION (mirrors Kaggle dataset schema)
-#  Replace `df = generate_dataset()` with:
-#  df = pd.read_csv("manufacturing_production_data.csv")
-# ─────────────────────────────────────────────
-
-np.random.seed(42)
-
-def generate_dataset(n=500):
-    """
-    Generates a synthetic dataset matching the Kaggle Manufacturing Production Data schema.
-    Columns match: Job_ID, Machine_ID, Department, Shift, Scheduled_Start,
-    Scheduled_End, Actual_Start, Actual_End, Scheduled_Qty, Actual_Qty,
-    Machine_Capacity, Workers_Assigned, Max_Workers, Efficiency_Score, Delay_Reason
-    """
-    departments  = ["Assembly", "Machining", "Fabrication", "Quality", "Packaging"]
-    shifts       = ["Morning", "Afternoon", "Night"]
-    machines     = [f"M{str(i).zfill(3)}" for i in range(1, 21)]
-    delay_cats   = [
-        "Material Shortage", "Machine Breakdown", "Labour Absence",
-        "Power Outage", "Quality Rework", "No Delay", "No Delay",
-        "No Delay", "No Delay", "No Delay"           # weight toward No Delay
-    ]
-
-    base_date = pd.Timestamp("2024-01-01")
-    sched_starts = [base_date + pd.Timedelta(hours=np.random.randint(0, 24*180))
-                    for _ in range(n)]
-    sched_durations = np.random.randint(2, 12, n)          # hours
-    sched_ends   = [s + pd.Timedelta(hours=int(d))
-                    for s, d in zip(sched_starts, sched_durations)]
-
-    delay_hours  = np.where(np.random.rand(n) < 0.35,
-                            np.random.exponential(3, n), 0).round(1)
-
-    actual_starts = [s + pd.Timedelta(hours=float(dh))
-                     for s, dh in zip(sched_starts, delay_hours)]
-    actual_durations = sched_durations * np.random.uniform(0.85, 1.40, n)
-    actual_ends   = [s + pd.Timedelta(hours=float(d))
-                     for s, d in zip(actual_starts, actual_durations)]
-
-    machine_cap   = np.random.randint(80, 200, n)
-    actual_qty    = (machine_cap * np.random.uniform(0.55, 1.05, n)).astype(int)
-    scheduled_qty = (machine_cap * np.random.uniform(0.85, 1.00, n)).astype(int)
-    actual_qty    = np.minimum(actual_qty, machine_cap)
-
-    max_workers  = np.random.randint(5, 20, n)
-    workers_assigned = (max_workers * np.random.uniform(0.5, 1.0, n)).astype(int)
-
-    efficiency   = np.clip(
-        np.random.normal(loc=72, scale=15, size=n), 20, 100
-    ).round(1)
-
-    delay_reason = np.where(
-        delay_hours > 0,
-        np.random.choice(delay_cats[:5], n),
-        "No Delay"
-    )
-
-    df = pd.DataFrame({
-        "Job_ID"          : [f"JOB-{i:04d}" for i in range(1, n+1)],
-        "Machine_ID"      : np.random.choice(machines, n),
-        "Department"      : np.random.choice(departments, n),
-        "Shift"           : np.random.choice(shifts, n),
-        "Scheduled_Start" : sched_starts,
-        "Scheduled_End"   : sched_ends,
-        "Actual_Start"    : actual_starts,
-        "Actual_End"      : actual_ends,
-        "Scheduled_Qty"   : scheduled_qty,
-        "Actual_Qty"      : actual_qty,
-        "Machine_Capacity": machine_cap,
-        "Workers_Assigned": workers_assigned,
-        "Max_Workers"     : max_workers,
-        "Efficiency_Score": efficiency,
-        "Delay_Hours"     : delay_hours,
-        "Delay_Reason"    : delay_reason,
-    })
-    return df
-
-
 # ── Load data ──────────────────────────────────────────────────────────────────
-df = generate_dataset(500)
+df = pd.read_csv("manufacturing_production_data.csv")
 
 # ── Derived columns ────────────────────────────────────────────────────────────
 df["Sched_Duration_hrs"] = (df["Scheduled_End"] - df["Scheduled_Start"]).dt.total_seconds() / 3600
