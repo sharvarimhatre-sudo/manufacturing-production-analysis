@@ -1,4 +1,4 @@
-# 🏭 Manufacturing Production Analysis
+# Manufacturing Production Analysis
 ### KPI Engineering + Operational Visualizations in Python
 
 ![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white)
@@ -9,7 +9,7 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
 A end-to-end Python analytics pipeline built on the
 [Manufacturing Production Dataset](https://www.kaggle.com/datasets/ziya07/manufacturing-production-data)
@@ -23,7 +23,7 @@ jobs miss their scheduled completion time.
 
 ---
 
-## 📊 Key Findings
+## Key Findings
 
 | KPI | Result | Status |
 |-----|--------|--------|
@@ -38,7 +38,7 @@ jobs miss their scheduled completion time.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 manufacturing-production-analysis/
@@ -58,7 +58,7 @@ manufacturing-production-analysis/
 
 ---
 
-## ⚙️ KPIs Engineered
+## KPIs Engineered
 
 ### 1 — Schedule Adherence
 Measures whether jobs complete by their scheduled end time.
@@ -103,7 +103,7 @@ underperformance is a talent gap (bimodal) or systems gap (normal distribution).
 
 ---
 
-## 📈 Visualizations
+## Visualizations
 
 ### Viz 1 — Production Schedule vs Actual
 Four-panel overview: monthly scheduled vs actual quantity (grouped bar), job
@@ -126,7 +126,7 @@ OLS regression trend line.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 ```bash
@@ -157,7 +157,7 @@ Kaggle schema and produce all outputs immediately.
 
 ---
 
-## 🗃️ Dataset Schema
+## Dataset Schema
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -180,15 +180,15 @@ Kaggle schema and produce all outputs immediately.
 
 ---
 
-## 💡 Key Takeaways
+## Key Takeaways
 
 ```
-❌ 82% of jobs miss schedule    →  Planning ≠ Execution
-⚠️  79.5% capacity util         →  Aggregate hides machine-level imbalance
-📉  P95 lead time is 2× mean    →  Variance, not average, is the customer problem
-🔄  68.9% resource util (flat)  →  Job sequencing gap, not a shift problem
-📊  Normal efficiency curve     →  Systems constraint, not a talent gap
-🎯  2 causes = 80% of delays    →  Pareto confirmed — fix is concentrated
+-> 82% of jobs miss schedule    →  Planning ≠ Execution
+->  79.5% capacity util         →  Aggregate hides machine-level imbalance
+->  P95 lead time is 2× mean    →  Variance, not average, is the customer problem
+->  68.9% resource util (flat)  →  Job sequencing gap, not a shift problem
+->  Normal efficiency curve     →  Systems constraint, not a talent gap
+->  2 causes = 80% of delays    →  Pareto confirmed — fix is concentrated
 ```
 
 ---
@@ -199,7 +199,7 @@ Kaggle schema and produce all outputs immediately.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Library | Purpose |
 |---------|---------|
@@ -211,7 +211,7 @@ Kaggle schema and produce all outputs immediately.
 
 ---
 
-## 📄 License
+## License
 
 MIT — free to use, adapt, and share with attribution.
 
